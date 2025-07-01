@@ -1,0 +1,1327 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <!-------------------------------->
+    <!-- Head -->
+    <!-------------------------------->
+    <head>
+        <!-------------------------------->
+        <!-- Meta -->
+        <!-------------------------------->
+
+        <!-- Primary Meta Tags -->
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Aedyn Simon | Portfolio</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+        <!-------------------------------->
+        <!-- Custom CSS -->
+        <!-------------------------------->
+
+        <!-- CSS -->
+        <style>
+            /*===============================
+            FONT IMPORT & BASE STYLES
+            ===============================*/
+            @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+            body {
+                font-family: 'Poppins', sans-serif;
+                scroll-behavior: smooth;
+            }
+
+
+            /*===============================
+            GLOBAL UTILITIES
+            ===============================*/
+            .gradient-text {
+                background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+                -webkit-background-clip: text;
+                background-clip: text;
+                color: transparent;
+            }
+
+            .floating {
+                animation: floating 4s ease-in-out infinite;
+            }
+
+            @keyframes floating {
+                0% { transform: translateY(0px); }
+                50% { transform: translateY(-15px); }
+                100% { transform: translateY(0px); }
+            }
+
+
+            /*===============================
+            NAVIGATION STYLES
+            ===============================*/
+            .nav-link {
+                position: relative;
+            }
+
+            .nav-link::after {
+                content: '';
+                position: absolute;
+                bottom: -5px;
+                left: 0;
+                width: 0;
+                height: 2px;
+                background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+                transition: width 0.3s ease;
+            }
+
+            .nav-link:hover::after,
+            .nav-link.active::after {
+                width: 100%;
+            }
+
+
+            /*===============================
+            COMPONENT: GLASS CARD
+            ===============================*/
+            .glass-card {
+                background: rgba(255, 255, 255, 0.1);
+                backdrop-filter: blur(10px);
+                -webkit-backdrop-filter: blur(10px);
+                border: 1px solid rgba(255, 255, 255, 0.2);
+            }
+
+
+            /*===============================
+            COMPONENT: PROJECT CARD
+            ===============================*/
+            .project-card {
+                transition: all 0.3s ease;
+            }
+
+            .project-card:hover {
+                transform: translateY(-10px);
+                box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            }
+
+
+            /*===============================
+            COMPONENT: SKILL BAR
+            ===============================*/
+            .skill-bar {
+                height: 8px;
+                border-radius: 4px;
+                background: rgba(255, 255, 255, 0.2);
+            }
+
+            .skill-progress {
+                height: 100%;
+                border-radius: 4px;
+                background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+            }
+
+
+            /*===============================
+            TIMELINE STYLES
+            ===============================*/
+            .timeline-item:not(:last-child)::after {
+                content: '';
+                position: absolute;
+                left: 16px;
+                top: 46px;
+                height: calc(100% - 32px);
+                width: 2px;
+                background: rgb(255, 255, 255);
+            }
+        </style>
+    </head>
+
+    <!-------------------------------->
+    <!-- Body -->
+    <!-------------------------------->
+    <body class="overflow-x-hidden bg-neutral-200 text-black cursor-default">
+
+        <!-------------------------------->
+        <!-- Navigation -->
+        <!-------------------------------->
+        <nav class="fixed z-50 w-full bg-neutral-100 bg-opacity-50 backdrop-blur-sm backdrop-filter shadow-lg">
+
+            <!-- Navbar Content Container -->
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+                <!-- Flex Wrapper: Brand / Nav Links / Mobile Button -->
+                <div class="flex items-center justify-between h-16">
+
+                    <!-- Logo / Brand -->
+                    <div class="flex items-center">
+                        <span class="text-3xl font-bold gradient-text">
+                            AS.
+                        </span>
+                    </div>
+
+                    <!-- Desktop Navigation Menu -->
+                    <div class="hidden md:block">
+                        <div class="ml-10 flex items-baseline space-x-8">
+                            <a href="#home" class="nav-link active px-3 py-2 text-sm font-medium">
+                                Home
+                            </a>
+                            <a href="#about" class="nav-link px-3 py-2 text-sm font-medium">
+                                About
+                            </a>
+                            <a href="#skills" class="nav-link px-3 py-2 text-sm font-medium">
+                                Skills
+                            </a>
+                            <a href="#projects" class="nav-link px-3 py-2 text-sm font-medium">
+                                Projects
+                            </a>
+                            <a href="#experience" class="nav-link px-3 py-2 text-sm font-medium">
+                                Experience
+                            </a>
+                            <a href="#contact" class="nav-link px-3 py-2 text-sm font-medium">
+                                Contact
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Mobile Menu Button -->
+                    <div class="md:hidden">
+                        <button id="menu-toggle" class="text-gray-300 hover:text-white focus:outline-none">
+                            <i class="fas fa-bars text-2xl text-black"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Mobile Navigation Menu (Dropdown) -->
+            <div id="mobile-menu" class="hidden md:hidden glass-card">
+                <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                    <a href="#home" class="block px-3 py-2 text-base font-medium active">
+                        Home
+                    </a>
+                    <a href="#about" class="block px-3 py-2 text-base font-medium">
+                        About
+                    </a>
+                    <a href="#skills" class="block px-3 py-2 text-base font-medium">
+                        Skills
+                    </a>
+                    <a href="#projects" class="block px-3 py-2 text-base font-medium">
+                        Projects
+                    </a>
+                    <a href="#experience" class="block px-3 py-2 text-base font-medium">
+                        Experience
+                    </a>
+                    <a href="#contact" class="block px-3 py-2 text-base font-medium">
+                        Contact
+                    </a>
+                </div>
+            </div>
+        </nav>
+
+        <!-------------------------------->
+        <!-- Hero Section -->
+        <!-------------------------------->
+        <section id="home" class="min-h-screen flex items-center justify-center pt-16">
+
+            <!-- Section Wrapper w/Responsive Padding and Vertical Spacing -->
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+
+                <!-- Flex Container for Dynamic Spacing -->
+                <div class="flex flex-col md:flex-row items-center">
+
+                    <!-- Left Column: Text Content -->
+                    <div class="md:w-1/2 mb-10 md:mb-0">
+
+                        <!-- Main Heading -->
+                        <h1 class="text-4xl sm:text-5xl md:text-7xl font-bold mb-4">
+                            Hi, I'm 
+                            <span class="gradient-text">
+                                Aedyn Simon
+                            </span>
+                        </h1>
+
+                        <!-- Subheading -->
+                        <h2 class="text-2xl md:text-3xl font-semibold mb-6">
+                            Software Developer & 
+                            <span class="gradient-text">
+                                Drummer
+                            </span>
+                        </h2>
+
+                        <!-- Description Paragraph -->
+                        <p class="text-neutral-500 mb-8 max-w-lg">
+                            Live is the motion of the soul step <br>
+                            Set the exposure to my one step <br>
+                            This scene'll last to the next step <br>
+                            All those in favor take a big step . . .
+                        </p>
+
+                        <!-- CTA Buttons -->
+                        <div class="flex space-x-4">
+                            
+                            <!-- Hire Me Button -->
+                            <a href="#contact" class="px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg font-medium text-neutral-200 hover:opacity-90 transition">
+                                Hire Me
+                            </a>
+
+                            <!-- View Work Button -->
+                            <a href="#projects" class="px-6 py-3 border border-neutral-700 rounded-lg font-medium text-black hover:bg-neutral-700 hover:text-white transition">
+                                View Work
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Right Column: Profile Image -->
+                    <div class="md:w-1/2 flex justify-center">
+
+                        <!-- Wrapper for Image and Background -->
+                        <div class="relative w-64 h-64 md:w-80 md:h-80">
+
+                            <!-- Blurred Gradient Background -->
+                            <div class="absolute inset-0 bg-black rounded-full opacity-30 blur-md"></div>
+
+                            <!-- Profile Image -->
+                            <div class="relative w-full h-full flex items-center justify-center">
+                                <img src="assets/profile-pic.png" alt="Profile" class="w-56 h-56 md:w-72 md:h-72 rounded-full object-cover">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-------------------------------->
+        <!-- About Section -->
+        <!-------------------------------->
+        <section id="about" class="py-20">
+
+            <!-- Outer Container -->
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <!-- Section Title -->
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl sm:text-5xl md:text-7xl font-bold mb-4">
+                        About 
+                        <span class="gradient-text">
+                            Me
+                        </span>
+                    </h2>
+
+                    <!-- Underline -->
+                    <div class="w-20 h-1 bg-gradient-to-r from-blue-500 to-purple-600 mx-auto"></div>
+                </div>
+                
+                <!-- Container for Image and Content -->
+                <div class="flex flex-col md:flex-row items-center">
+                    
+                    <!-- About Image -->
+                    <div class="md:w-1/3 mb-10 md:mb-0 flex justify-center">
+
+                        <!-- Wrapper for Image -->
+                        <div class="relative w-64 h-64">
+
+                            <!-- Image Shadow -->
+                            <div class="absolute -inset-2 bg-black rounded-lg blur-lg opacity-20"></div>
+                            
+                            <!-- Image -->
+                            <img src="assets/about-pic.png" alt="About" class="relative w-full h-full rounded-lg object-cover">
+                        </div>
+                    </div>
+                    
+                    <!-- Text Content -->
+                    <div class="md:w-2/3 md:pl-12">
+
+                        <!-- Subtitle -->
+                        <h3 class="text-2xl sm:text-3xl md:text-4xl font-semibold mb-4">Who am I?</h3>
+
+                        <!-- Description paragraph -->
+                        <p class="text-neutral-500 mb-6">
+                            I am currently studying at Colorado State univeristy in Fort
+                            Collins Colorado where I am obtaining my bachelors of sciece
+                            degree in Computer Science with a general concentration in
+                            Computer Science, and a minor in Music focused around Jazz
+                            Drumset. I chose to concentrate my studies around all of general
+                            Computer Science because I didn't want to feel limited by my
+                            courses or graduation requirements, I want to take many different
+                            Computer Science courses To find what I like best and to become a
+                            well rounded and adaptable software developer. I am currently
+                            greatly interested in AI/Machine Learning, Cyber Security, and
+                            Full-Stack Software Development.
+                            <br>
+                            <br>
+                            I have been playing drums for just under 4 years and in that time
+                            I have been a part of 7+ different personal bands and part of the
+                            top University Jazz Bands. The personal bands I am in mainly play
+                            funk with a heavy jazz influence, rock, and punk. The group I
+                            spend the most time with is called Abunto which is comprised of
+                            bass, guitar, keys, and drums which all also study music/jazz here
+                            at CSU Fort Collins.
+                        </p>
+                        
+                        <!-- Personal details as a grid -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+
+                            <!-- Name -->
+                            <div>
+                                <h4 class="font-medium mb-2">
+                                    <i class="fas fa-user mr-2 text-purple-600 text-xl"></i> Name
+                                </h4>
+                                <p class="text-neutral-500">Aedyn Simon</p>
+                            </div>
+
+                            <!-- Email -->
+                            <div>
+                                <h4 class="font-medium mb-2">
+                                    <i class="fas fa-envelope mr-2 text-blue-600 text-xl"></i> Email
+                                </h4>
+                                <p class="text-neutral-500">aedynsimon@gmail.com</p>
+                            </div>
+
+                            <!-- Phone -->
+                            <div>
+                                <h4 class="font-medium mb-2">
+                                    <i class="fas fa-phone mr-2 text-red-600 text-xl"></i> Phone
+                                </h4>
+                                <p class="text-neutral-500">(720) 376 1542</p>
+                            </div>
+
+                            <!-- Location -->
+                            <div>
+                                <h4 class="font-medium mb-2">
+                                    <i class="fas fa-map-marker-alt mr-2 text-green-600 text-xl"></i> Location
+                                </h4>
+                                <p class="text-neutral-500">Fort Collins & Denver, CO</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Social Links -->
+                        <div class="flex space-x-4">
+
+                            <!-- Github Button -->
+                            <a href="https://github.com/AedynSimon" target="_blank" rel="noopener noreferrer" class="w-10 h-10 font-bold rounded-full text-black border-2 border-black flex items-center justify-center hover:bg-neutral-700 hover:border-neutral-700 hover:text-white transition">
+                                <i class="fab fa-github"></i>
+                            </a>
+
+                            <!-- Instagram Button -->
+                            <a href="https://www.instagram.com/aedyn_simon/" target="_blank" rel="noopener noreferrer" class="w-10 h-10 font-bold rounded-full text-black border-2 border-black flex items-center justify-center hover:bg-red-600 hover:border-red-600 hover:text-white transition">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+
+                            <!-- LinkedIn Button -->
+                            <a href="https://www.linkedin.com/in/aedynsimon/" target="_blank" rel="noopener noreferrer" class="w-10 h-10 font-bold rounded-full text-black border-2 border-black flex items-center justify-center hover:bg-blue-600 hover:border-blue-600 hover:text-white transition">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-------------------------------->
+        <!-- Skills Section -->
+        <!-------------------------------->
+        <section id="skills" class="py-20">
+
+            <!-- Outer Container -->
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+                <!-- Section Title-->
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl sm:text-5xl md:text-7xl font-bold mb-4">
+                        My 
+                        <span class="gradient-text">
+                            Skills
+                        </span>
+                    </h2>
+
+                    <!-- Underline -->
+                    <div class="w-20 h-1 bg-gradient-to-r from-blue-500 to-purple-600 mx-auto"></div>
+                </div>
+                
+                <!-- Two-column Layout for Technical and Professional Skills -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+
+                    <!-- Left Column: Technical Skills -->
+                    <div>
+                        <h3 class="text-xl font-semibold mb-6">Technical Skills</h3>
+
+                        <!-- List of Individual Skills -->
+                        <div class="space-y-6">
+
+                            <!-- Skill 1 -->
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span>Python</span>
+                                    <span>67%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 67%"></div>
+                                </div>
+                            </div>
+
+                            <!-- Skill 2 -->
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span>Java</span>
+                                    <span>70%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 70%"></div>
+                                </div>
+                            </div>
+
+                            <!-- Skill 3 -->
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span>C++</span>
+                                    <span>40%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 40%"></div>
+                                </div>
+                            </div>
+
+                            <!-- Skill 4 -->
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span>HTML</span>
+                                    <span>39%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 39%"></div>
+                                </div>
+                            </div>
+
+                            <!-- Skill 5 -->
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span>CSS</span>
+                                    <span>45%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 45%"></div>
+                                </div>
+                            </div>
+
+                            <!-- Skill 6 -->
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span>JavaScript</span>
+                                    <span>25%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 25%"></div>
+                                </div>
+                            </div>
+
+                            <!-- Skill 7 -->
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span>SQL</span>
+                                    <span>20%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 20%"></div>
+                                </div>
+                            </div>
+
+                            <!-- Skill 8 -->
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span>PL / SQL</span>
+                                    <span>18%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 18%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Right Column: Professional Skills -->
+                    <div>
+                        <h3 class="text-xl font-semibold mb-6">Professional Skills</h3>
+
+                        <!-- List of Professional Skills -->
+                        <div class="space-y-6">
+
+                            <!-- Skill 1 -->
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span>Communication</span>
+                                    <span>90%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 90%"></div>
+                                </div>
+                            </div>
+
+                            <!-- Skill 2 -->
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span>Team Work</span>
+                                    <span>85%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 85%"></div>
+                                </div>
+                            </div>
+
+                            <!-- Skill 3 -->
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span>Project Management</span>
+                                    <span>70%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 70%"></div>
+                                </div>
+                            </div>
+
+                            <!-- Skill 4 -->
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span>Creativity</span>
+                                    <span>95%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 95%"></div>
+                                </div>
+                            </div>
+
+                            <!-- Skill 5 -->
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span>Leadership</span>
+                                    <span>84%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 84%"></div>
+                                </div>
+                            </div>
+
+                            <!-- Skill 6 -->
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span>Problem Solving</span>
+                                    <span>90%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 90%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tools & Technologies Section -->
+                <div class="mt-16">
+                    <h3 class="text-xl font-semibold mb-6 text-center">Tools & Technologies</h3>
+                    
+                    <!-- Flex grid of tool icons -->
+                    <div class="flex flex-wrap justify-center gap-6">
+                        <div class="w-16 h-16 bg-black rounded-lg flex items-center justify-center hover:bg-gray-700 transition">
+                            <i class="fab fa-html5 text-3xl text-orange-500"></i>
+                        </div>
+                        <div class="w-16 h-16 bg-black rounded-lg flex items-center justify-center hover:bg-gray-700 transition">
+                            <i class="fab fa-css3-alt text-3xl text-blue-500"></i>
+                        </div>
+                        <div class="w-16 h-16 bg-black rounded-lg flex items-center justify-center hover:bg-gray-700 transition">
+                            <i class="fab fa-js text-3xl text-yellow-400"></i>
+                        </div>
+                        <div class="w-16 h-16 bg-black rounded-lg flex items-center justify-center hover:bg-gray-700 transition">
+                            <i class="fab fa-react text-3xl text-blue-400"></i>
+                        </div>
+                        <div class="w-16 h-16 bg-black rounded-lg flex items-center justify-center hover:bg-gray-700 transition">
+                            <i class="fab fa-github text-3xl text-white"></i>
+                        </div>
+                        <div class="w-16 h-16 bg-black rounded-lg flex items-center justify-center hover:bg-gray-700 transition">
+                            <i class="fab fa-git-alt text-3xl text-orange-600"></i>
+                        </div>
+                        <div class="w-16 h-16 bg-black rounded-lg flex items-center justify-center hover:bg-gray-700 transition">
+                            <i class="fab fa-python text-3xl text-sky-500"></i>
+                        </div>
+                        <div class="w-16 h-16 bg-black rounded-lg flex items-center justify-center hover:bg-gray-700 transition">
+                            <i class="fas fa-database text-3xl text-blue-600"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-------------------------------->
+        <!-- Projects Section -->
+        <!-------------------------------->
+        <section id="projects" class="py-20">
+
+            <!-- Outer Container -->
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+                <!-- Section Title -->
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl sm:text-5xl md:text-7xl font-bold mb-4">
+                        My 
+                        <span class="gradient-text">
+                            Projects
+                        </span>
+                    </h2>
+
+                    <!-- Underline -->
+                    <div class="w-20 h-1 bg-gradient-to-r from-blue-500 to-purple-600 mx-auto"></div>
+                </div>
+                
+                <!-- Responsive Grid Layout for Project Cards -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+                    <!-- Project 1 -->
+                    <div class="project-card bg-white rounded-xl overflow-hidden transition duration-300 shadow-xl">
+
+                        <!-- Image w/Overlay -->
+                        <div class="relative h-48 overflow-hidden">
+                            <img src="assets/project_1.png" alt="Project 1" class="w-full h-full object-cover">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-40"></div>
+                        </div>
+
+                        <!-- Project Content Area -->
+                        <div class="p-6">
+
+                            <!-- Project Title and Action Icons -->
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="text-xl font-semibold">
+                                    Abunto Website
+                                </h3>
+
+                                <!-- Description Box -->
+                                <div class="flex space-x-2">
+
+                                    <!-- External Site Links -->
+                                    <a href="https://github.com/AedynSimon/abunto_website" target="_blank" rel="noopener noreferrer" class="text-neutral-600 text-lg hover:text-blue-500">
+                                        <i class="fab fa-github"></i>
+                                    </a>
+                                    <a href="https://github.com/AedynSimon/abunto_website/blob/main/README.md" target="_blank" rel="noopener noreferrer" class="text-neutral-600 text-lg hover:text-purple-500">
+                                        <i class="fas fa-external-link-alt"></i>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <!-- Project Description -->
+                            <p class="text-neutral-500 mb-4">
+                                A full-featured band website with contact integration, music demos, and a complete user friendly and responsive UI.
+                            </p>
+
+                            <!-- Tech Stack Tags -->
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-2 py-1 bg-blue-700 text-xs text-neutral-200 rounded">
+                                    HTML
+                                </span>
+                                <span class="px-2 py-1 bg-blue-700 text-xs text-neutral-200 rounded">
+                                    CSS & TailWind CSS
+                                </span>
+                                <span class="px-2 py-1 bg-blue-700 text-xs text-neutral-200 rounded">
+                                    JavaScript
+                                </span>
+                                <span class="px-2 py-1 bg-blue-700 text-xs text-neutral-200 rounded">
+                                    Netlify
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 2 -->
+                    <div class="project-card bg-white rounded-xl overflow-hidden transition duration-300 shadow-xl">
+
+                        <!-- Image w/Overlay -->
+                        <div class="relative h-48 overflow-hidden">
+                            <img src="assets/project_2.png" alt="Project 1" class="w-full h-full object-cover">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-40"></div>
+                        </div>
+
+                        <!-- Project Content Area -->
+                        <div class="p-6">
+
+                            <!-- Project Title and Action Icons -->
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="text-xl font-semibold">
+                                    AI Image Generator
+                                </h3>
+
+                                <!-- Description Box -->
+                                <div class="flex space-x-2">
+
+                                    <!-- External Site Links -->
+                                    <a href="https://github.com/AedynSimon/ai_image_generator" target="_blank" rel="noopener noreferrer" class="text-neutral-600 text-lg hover:text-blue-500">
+                                        <i class="fab fa-github"></i>
+                                    </a>
+                                    <a href="https://github.com/AedynSimon/ai_image_generator/blob/main/README.md" target="_blank" rel="noopener noreferrer" class="text-neutral-600 text-lg hover:text-purple-500">
+                                        <i class="fas fa-external-link-alt"></i>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <!-- Project Description -->
+                            <p class="text-neutral-500 mb-4">
+                                A simple AI image generator web application that uses Hugging Face API's and a beautiful and intuitive UI for users to quickly and easily create amazing customizable images.
+                            </p>
+
+                            <!-- Tech Stack Tags -->
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-2 py-1 bg-blue-700 text-xs text-neutral-200 rounded">
+                                    HTML
+                                </span>
+                                <span class="px-2 py-1 bg-blue-700 text-xs text-neutral-200 rounded">
+                                    CSS
+                                </span>
+                                <span class="px-2 py-1 bg-blue-700 text-xs text-neutral-200 rounded">
+                                    JavaScript
+                                </span>
+                                <span class="px-2 py-1 bg-blue-700 text-xs text-neutral-200 rounded">
+                                    Hugging Face
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 3 -->
+                    <div class="project-card bg-white rounded-xl overflow-hidden transition duration-300 shadow-xl">
+
+                        <!-- Image w/Overlay -->
+                        <div class="relative h-48 overflow-hidden">
+                            <img src="assets/project_3.png" alt="Project 1" class="w-full h-full object-cover">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-40"></div>
+                        </div>
+
+                        <!-- Project Content Area -->
+                        <div class="p-6">
+
+                            <!-- Project Title and Action Icons -->
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="text-xl font-semibold">
+                                    Metronome
+                                </h3>
+
+                                <!-- Description Box -->
+                                <div class="flex space-x-2">
+
+                                    <!-- External Site Links -->
+                                    <a href="https://github.com/AedynSimon/python_metronome" target="_blank" rel="noopener noreferrer" class="text-neutral-600 text-lg hover:text-blue-500">
+                                        <i class="fab fa-github"></i>
+                                    </a>
+                                    <a href="https://github.com/AedynSimon/python_metronome/blob/main/README.md" target="_blank" rel="noopener noreferrer" class="text-neutral-600 text-lg hover:text-purple-500">
+                                        <i class="fas fa-external-link-alt"></i>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <!-- Project Description -->
+                            <p class="text-neutral-500 mb-4">
+                                A beautiful application built for musicians by a drummer featuring a simple and easy to use UI and an elegant design
+                            </p>
+
+                            <!-- Tech Stack Tags -->
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-2 py-1 bg-blue-700 text-xs text-neutral-200 rounded">
+                                    Python
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                
+                <!-- CTA Button to View more Projects -->
+                <div class="text-center mt-12">
+                    <a href="https://github.com/AedynSimon" target="_blank" rel="noopener noreferrer" class="px-6 py-3 border border-black rounded-lg font-medium hover:bg-black hover:text-neutral-200 transition inline-flex items-center shadow-md">
+                        View All Projects <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-------------------------------->
+        <!-- Experience Section -->
+        <!-------------------------------->
+        <section id="experience" class="py-20">
+
+            <!-- Outer Container -->
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+                <!-- Section Heading -->
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl sm:text-5xl md:text-7xl font-bold mb-4">
+                        Work 
+                        <span class="gradient-text">
+                            Experience
+                        </span>
+                    </h2>
+
+                    <!-- Underline -->
+                    <div class="w-20 h-1 bg-gradient-to-r from-blue-500 to-purple-600 mx-auto"></div>
+                </div>
+                
+                <!-- Timeline Wrapper -->
+                <div class="max-w-3xl mx-auto">
+                    <div class="space-y-8">
+
+                        <!-- Experience 1 -->
+                        <div class="timeline-item relative pl-16">
+
+                            <!-- Left Icon Circle -->
+                            <div class="absolute left-0 top-0 w-8 h-8 rounded-full bg-gradient-to-r from-blue-500 to-purple-600 flex items-center justify-center">
+                                <i class="fas fa-briefcase text-white"></i>
+                            </div>
+
+                            <!-- Card Container -->
+                            <div class="bg-white p-6 rounded-lg shadow-lg">
+
+                                <!-- Job Title and Date Range-->
+                                <div class="flex flex-col md:flex-row md:justify-between md:items-center mb-2">
+                                    <h3 class="text-xl font-semibold">
+                                        Data Structures & Algorithms Teaching Assistant
+                                    </h3>
+                                    <span class="text-sm text-gray-400">
+                                        Dec. 2024 - Ongoing
+                                    </span>
+                                </div>
+
+                                <!-- Company Name -->
+                                <h4 class="text-blue-400 mb-3">
+                                    CSU Computer Science Department
+                                </h4>
+                                <!-- Role Summary -->
+                                <p class="text-neutral-600">
+                                    Leverage programming skills in Java to explain and demonstrate key data structures such as arrays, linked lists, stacks, queues, trees, and graphs while guiding students through the implementation of recursive and iterative algorithms to solve complex computational problems. Apply strong technical communication and analytical problem-solving skills to assist with lab sessions by providing hands-on support, detailed code reviews, and constructive feedback to foster success in a collaborative and welcoming environment. Develop instructional materials and sample code to clarify challenging concepts such as recursion, software testing, algorithms, etc.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Experience 2 -->
+                        <div class="timeline-item relative pl-16">
+
+                            <!-- Left Icon Circle -->
+                            <div class="absolute left-0 top-0 w-8 h-8 rounded-full bg-gradient-to-r from-blue-500 to-purple-600 flex items-center justify-center">
+                                <i class="fas fa-briefcase text-white"></i>
+                            </div>
+
+                            <!-- Card Container -->
+                            <div class="bg-white p-6 rounded-lg shadow-lg">
+
+                                <!-- Job Title and Date Range-->
+                                <div class="flex flex-col md:flex-row md:justify-between md:items-center mb-2">
+                                    <h3 class="text-xl font-semibold">
+                                        Service Desk / Technical Support Intern 
+                                    </h3>
+                                    <span class="text-sm text-gray-400">
+                                        Dec. 2024 - Present
+                                    </span>
+                                </div>
+
+                                <!-- Company Name -->
+                                <h4 class="text-blue-400 mb-3">
+                                    CSU Division of IT
+                                </h4>
+                                <!-- Role Summary -->
+                                <p class="text-neutral-600">
+                                    Diagnose and resolve technical issues by leveraging troubleshooting tools and helping to write basic scripts in a small team of 5. Collaborate on IT projects to help develop automation tools, workflow optimizations, and system improvements to improve operations. Hands-on experience in network diagnostics, system configurations, and coding for IT support tasks, while building technical customer service skills and solving complex technical issues.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Experience 3 -->
+                        <div class="timeline-item relative pl-16">
+
+                            <!-- Left Icon Circle -->
+                            <div class="absolute left-0 top-0 w-8 h-8 rounded-full bg-gradient-to-r from-blue-500 to-purple-600 flex items-center justify-center">
+                                <i class="fas fa-briefcase text-white"></i>
+                            </div>
+
+                            <!-- Card Container -->
+                            <div class="bg-white p-6 rounded-lg shadow-lg">
+
+                                <!-- Job Title and Date Range-->
+                                <div class="flex flex-col md:flex-row md:justify-between md:items-center mb-2">
+                                    <h3 class="text-xl font-semibold">
+                                        Software Development Intern
+                                    </h3>
+                                    <span class="text-sm text-gray-400">
+                                        May 2022 - Dec. 2024
+                                    </span>
+                                </div>
+
+                                <!-- Company Name -->
+                                <h4 class="text-blue-400 mb-3">
+                                    EA Simon Enterprises
+                                </h4>
+                                <!-- Role Summary -->
+                                <p class="text-neutral-600">
+                                    Assisted in the development and debugging of software applications, while contributing to multiple successful team projects. Participated in Scrum methodologies, attending standups and sprint planning to enhance collaboration and productivity for the team. Gained hands-on experience with software development skills: Python, Java, GitHub, Docker, and object-oriented programming.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Experience 4 -->
+                        <div class="timeline-item relative pl-16">
+
+                            <!-- Left Icon Circle -->
+                            <div class="absolute left-0 top-0 w-8 h-8 rounded-full bg-gradient-to-r from-blue-500 to-purple-600 flex items-center justify-center">
+                                <i class="fas fa-briefcase text-white"></i>
+                            </div>
+
+                            <!-- Card Container -->
+                            <div class="bg-white p-6 rounded-lg shadow-lg">
+
+                                <!-- Job Title and Date Range-->
+                                <div class="flex flex-col md:flex-row md:justify-between md:items-center mb-2">
+                                    <h3 class="text-xl font-semibold">
+                                        Food Service Associate
+                                    </h3>
+                                    <span class="text-sm text-gray-400">
+                                        Aug. 2024 - Dec. 2024
+                                    </span>
+                                </div>
+
+                                <!-- Company Name -->
+                                <h4 class="text-blue-400 mb-3">
+                                    CSU Dining Services
+                                </h4>
+                                <!-- Role Summary -->
+                                <p class="text-neutral-600">
+                                    Worked in teams of 20+ people in industrial kitchens preparing food for 5,000+ students daily. Maintained instustry standard health and safety practices and traind new hires for my team. Dealt with 1,000+ customers daily ensuring high qualities of customer service.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Experience 5 -->
+                        <div class="timeline-item relative pl-16">
+
+                            <!-- Left Icon Circle -->
+                            <div class="absolute left-0 top-0 w-8 h-8 rounded-full bg-gradient-to-r from-blue-500 to-purple-600 flex items-center justify-center">
+                                <i class="fas fa-briefcase text-white"></i>
+                            </div>
+
+                            <!-- Card Container -->
+                            <div class="bg-white p-6 rounded-lg shadow-lg">
+
+                                <!-- Job Title and Date Range-->
+                                <div class="flex flex-col md:flex-row md:justify-between md:items-center mb-2">
+                                    <h3 class="text-xl font-semibold">
+                                        Event Services Coordinator
+                                    </h3>
+                                    <span class="text-sm text-gray-400">
+                                        July 2023 - Aug. 2023
+                                    </span>
+                                </div>
+
+                                <!-- Company Name -->
+                                <h4 class="text-blue-400 mb-3">
+                                    Pork Belly Ventures
+                                </h4>
+                                <!-- Role Summary -->
+                                <p class="text-neutral-600">
+                                    Worked in a team of 60+ people for the largest recreation bike race in the world, RAGBRAI. Took down and set up tents every morning for 600+ campers along the bike route accross Iowa. Served food, cleaned and maintained showers and performed cleanup duty. Was a leader for my team and ensured the highest quality of customer service to all clients.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Experience 6 -->
+                        <div class="timeline-item relative pl-16">
+
+                            <!-- Left Icon Circle -->
+                            <div class="absolute left-0 top-0 w-8 h-8 rounded-full bg-gradient-to-r from-blue-500 to-purple-600 flex items-center justify-center">
+                                <i class="fas fa-briefcase text-white"></i>
+                            </div>
+
+                            <!-- Card Container -->
+                            <div class="bg-white p-6 rounded-lg shadow-lg">
+
+                                <!-- Job Title and Date Range-->
+                                <div class="flex flex-col md:flex-row md:justify-between md:items-center mb-2">
+                                    <h3 class="text-xl font-semibold">
+                                        Bike Instructor / Child Care Specialist
+                                    </h3>
+                                    <span class="text-sm text-gray-400">
+                                        May 2020 - Sep. 2020
+                                    </span>
+                                </div>
+
+                                <!-- Company Name -->
+                                <h4 class="text-blue-400 mb-3">
+                                    Pedal Heads
+                                </h4>
+                                <!-- Role Summary -->
+                                <p class="text-neutral-600">
+                                    Worked with kids ages 4 - 15 in summer camp teaching them how to ride bikes and the rules of the road. Provided child care to children of all backgrounds and different needs. Worked with parents to ensure kids received the highest level of care and attention.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-------------------------------->
+        <!-- Contact Section -->
+        <!-------------------------------->
+        <section id="contact" class="py-20 bg-neutral-200">
+
+            <!-- Outer Container -->
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+                <!-- Section Title -->
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl sm:text-5xl md:text-7xl font-bold mb-4">
+                        Get In 
+                        <span class="gradient-text">
+                            Touch
+                        </span>
+                    </h2>
+
+                    <!-- Underline -->
+                    <div class="w-20 h-1 bg-gradient-to-r from-blue-500 to-purple-600 mx-auto"></div>
+                </div>
+                
+                <!-- Grid Layout: Left (info) / Right (form) -->
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+
+                    <!-- Left Side: Contact Info and Social Links -->
+                    <div>
+
+                        <!-- Subheading -->
+                        <h3 class="text-xl font-semibold mb-6">
+                            Contact Information
+                        </h3>
+                        
+                        <!-- Contact Description Paragraph -->
+                        <p class="text-neutral-600 mb-8">
+                            Feel free to reach out to me for any questions or opportunities. I'm always open to discussing new projects, creative ideas or opportunities to be part of your vision.
+                        </p>
+                        
+                        <!-- Contact Items List (Location, Email, Phone) -->
+                        <div class="space-y-6">
+
+                            <!-- Location -->
+                            <div class="flex items-start">
+                                <div class="w-10 h-10 rounded-full bg-white flex items-center justify-center mr-4 shadow-lg">
+                                    <i class="fas fa-map-marker-alt text-green-500"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium">
+                                        Location
+                                    </h4>
+                                    <p class="text-neutral-600">
+                                        Fort Collins & Denver, CO
+                                    </p>
+                                </div>
+                            </div>
+                            
+                            <!-- Email -->
+                            <div class="flex items-start">
+                                <div class="w-10 h-10 rounded-full bg-white flex items-center justify-center mr-4 shadow-lg">
+                                    <i class="fas fa-envelope text-blue-500"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium">
+                                        Email
+                                    </h4>
+                                    <p class="text-neutral-600">
+                                        aedynsimon@gmail.com
+                                    </p>
+                                </div>
+                            </div>
+
+                            <!-- Phone -->
+                            <div class="flex items-start">
+                                <div class="w-10 h-10 rounded-full bg-white flex items-center justify-center mr-4 shadow-lg">
+                                    <i class="fas fa-phone text-red-500"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium">
+                                        Phone
+                                    </h4>
+                                    <p class="text-neutral-600">
+                                        (720) 376 1542
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Social Media Icons -->
+                        <div class="mt-8">
+                            <h4 class="font-medium mb-4">
+                                Follow Me
+                            </h4>
+
+                            <!-- Social Buttons -->
+                            <div class="flex space-x-4">
+                                <a href="https://github.com/AedynSimon" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full text-bold border-2 border-black text-black flex items-center justify-center hover:border-neutral-700 hover:bg-neutral-700 hover:text-white transition">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                                <a href="https://www.instagram.com/aedyn_simon/" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full text-bold border-2 border-black text-black flex items-center justify-center hover:border-red-600 hover:bg-red-600 hover:text-white transition">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                                <a href="https://www.linkedin.com/in/aedynsimon/" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full text-bold border-2 border-black text-black flex items-center justify-center hover:border-blue-600 hover:bg-blue-600 hover:text-white transition">
+                                    <i class="fab fa-linkedin-in"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Right Side: Contact Form -->
+                    <div>
+
+                        <!-- Form Element with Spacing Between Inputs -->
+                        <form class="space-y-6">
+
+                            <!-- Name and Email side by side on medium+ screens -->
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+                                <!-- Name -->
+                                <div>
+                                    <label for="name" class="block mb-2 font-medium">
+                                        Your Name (This does not work)
+                                    </label>
+                                    <input type="text" id="name" class="w-full px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                </div>
+
+                                <!-- Email -->
+                                <div>
+                                    <label for="email" class="block mb-2 font-medium">
+                                        Your Email (This does not work)
+                                    </label>
+                                    <input type="email" id="email" class="w-full px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                </div>
+                            </div>
+
+                            <!-- Subject -->
+                            <div>
+                                <label for="subject" class="block mb-2 font-medium">
+                                    Subject (This does not work)
+                                </label>
+                                <input type="text" id="subject" class="w-full px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            </div>
+
+                            <!-- Message -->
+                            <div>
+                                <label for="message" class="block mb-2 font-medium">
+                                    Message (This does not work)
+                                </label>
+                                <textarea id="message" rows="5" class="w-full px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+                            </div>
+
+                            <!-- Submit Button -->
+                            <button type="submit" class="px-6 py-3 text-neutral-200 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg font-medium hover:opacity-90 transition w-full md:w-auto shadow-lg">
+                                Send Message (This does not work)
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-------------------------------->
+        <!-- Footer -->
+        <!-------------------------------->
+        <footer class="py-8 bg-black">
+
+            <!-- Outer Container -->
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+                <!-- Responsive Flex Layout -->
+                <div class="flex flex-col md:flex-row justify-between items-center">
+
+                    <!-- Logo / Brand (left side) -->
+                    <div class="mb-4 md:mb-0">
+                        <span class="text-xl sm:text-2xl md:text-3xl font-bold gradient-text">
+                            AS.
+                        </span>
+                    </div>
+
+                    <!-- Copyright -->
+                    <div class="text-gray-400 text-sm">
+                        © 2025 Aedyn Simon. All rights reserved (Yeah Right).
+                    </div>
+
+                    <!-- Back to Top Button (right side) -->
+                    <div class="mt-4 md:mt-0">
+                        <a href="#home" class="px-4 py-2 text-neutral-200 bg-neutral-800 rounded-lg font-medium hover:bg-neutral-700 transition inline-flex items-center">
+                            Back to Top <i class="fas fa-arrow-up ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+        <!-------------------------------->
+        <!-- JavaScript -->
+        <!-------------------------------->
+        <script>
+            // -----------------------------
+            // 1. Mobile Menu Toggle
+            // -----------------------------
+            const menuToggle = document.getElementById('menu-toggle');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            menuToggle?.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+
+            // -----------------------------
+            // 2. Smooth Scroll & Active Link Handling
+            // -----------------------------
+            const navLinks = document.querySelectorAll('.nav-link');
+            const allAnchors = document.querySelectorAll('a[href^="#"]');
+
+            allAnchors.forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+
+                    // Close mobile menu on click (if open)
+                    mobileMenu.classList.add('hidden');
+
+                    // Set active class on clicked nav link
+                    navLinks.forEach(link => link.classList.remove('active'));
+                    if (this.classList.contains('nav-link')) {
+                        this.classList.add('active');
+                    }
+
+                    // Smooth scroll to target section
+                    const targetId = this.getAttribute('href');
+                    if (targetId !== '#') {
+                        document.querySelector(targetId).scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+
+            // -----------------------------
+            // 3. Update Active Link on Scroll
+            // -----------------------------
+            window.addEventListener('scroll', () => {
+                const scrollPosition = window.scrollY;
+
+                document.querySelectorAll('section').forEach(section => {
+                    const sectionTop = section.offsetTop - 100;
+                    const sectionHeight = section.offsetHeight;
+                    const sectionId = section.getAttribute('id');
+
+                    if (
+                        scrollPosition >= sectionTop &&
+                        scrollPosition < sectionTop + sectionHeight
+                    ) {
+                        navLinks.forEach(link => {
+                            link.classList.remove('active');
+                            if (link.getAttribute('href') === `#${sectionId}`) {
+                                link.classList.add('active');
+                            }
+                        });
+                    }
+                });
+            });
+
+            // -----------------------------
+            // 4. Contact Form Submission (Mocked)
+            // -----------------------------
+            const contactForm = document.querySelector('form');
+
+            contactForm?.addEventListener('submit', function (e) {
+                e.preventDefault();
+                alert('Thank you for your message! I will get back to you soon.');
+                this.reset();
+            });
+        </script>
+    </body>
+</html>

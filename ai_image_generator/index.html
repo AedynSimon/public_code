@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<!-- AI Image Generator - Aedyn Simon -->
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" contents="width=device-width, initial-scale=1.0" />
+    <title>AI Image Generator | Aedyn Simon</title>
+    <!-- Linking Font Awesome for icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <!-- Header -->
+      <header class="header">
+        <div class="logo-wrapper">
+          <div class="logo">
+            <i class="fa-solid fa-wand-magic-sparkles"></i>
+          </div>
+          <h1>AI Image Generator</h1>
+        </div>
+        <!-- Light/Dark theme button -->
+        <button class="theme-toggle">
+          <i class="fa-solid fa-moon"></i>
+        </button>
+      </header>
+
+      <div class="main-content">
+        <form action="#" class="prompt-form">
+          <!-- Input box -->
+          <div class="prompt-container">
+            <textarea
+              class="prompt-input"
+              placeholder="Describer your imagination in detail..."
+              required
+              autofocus
+            ></textarea>
+            <!-- Random prompt button -->
+            <button type="button" class="prompt-btn">
+              <i class="fa-solid fa-dice"></i>
+            </button>
+          </div>
+
+          <!-- AI API choice -->
+          <div class="prompt-actions">
+            <div class="select-wrapper">
+              <select class="custom-select" id="model-select" required>
+                <option value="" selected disable>Select Model</option>
+                <option value="black-forest-labs/FLUX.1-dev">FlUX.1-dev</option>
+                <option value="black-forest-labs/FLUX.1-schnell">
+                  FLUX.1-schnell
+                </option>
+                <option value="stabilityai/stable-diffusion-xl-base-1.0">
+                  Stable Diffusion XL
+                </option>
+                <option value="runwayml/stable-diffusion-v1-5">
+                  Stable Diffusion v1.5
+                </option>
+                <option value="stabilityai/stable-diffusion-3.5-large">Stable Diffusion v3.5</option>
+              </select>
+            </div>
+
+            <!-- Image count choice -->
+            <div class="select-wrapper">
+              <select class="custom-select" id="count-select" required>
+                <option value="" selected disable>Image Count</option>
+                <option value="1">1 Image</option>
+                <option value="2">2 Images</option>
+                <option value="3">3 Images</option>
+                <option value="4">4 Images</option>
+              </select>
+            </div>
+
+            <!-- Aspect ratio choice -->
+            <div class="select-wrapper">
+              <select class="custom-select" id="ratio-select" required>
+                <option value="" selected disabled>Aspect Ratio</option>
+                <option value="1/1">Square (1:1)</option>
+                <option value="16/9">Landscape (16:9)</option>
+                <option value="9/16">Portrait (9:16)</option>
+              </select>
+            </div>
+
+            <!-- Generate image button -->
+            <button type="submit" class="generate-btn">
+              <i class="fa-solid fa-wand-sparkles"></i>
+              Generate
+            </button>
+          </div>
+
+          <!-- Result gallery grid -->
+          <div class="gallery-grid"></div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Use JavaScript -->
+    <script src="script.js"></script>
+  </body>
+</html>
